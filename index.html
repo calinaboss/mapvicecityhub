@@ -76,6 +76,28 @@
       flex-shrink: 0;
     }
 
+    .btn-back-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-back-hub:hover {
+      background: var(--accent-pink);
+      border-color: var(--accent-pink);
+      color: #ffffff;
+    }
+
     .brand-section {
       display: flex;
       align-items: center;
@@ -551,9 +573,14 @@
 
     <!-- TOP HEADER -->
     <header class="map-header">
-      <a href="https://vicecityhub.eu" class="brand-section" title="Return to ViceCityHub">
-        <img src="images/logo.webp" alt="ViceCityHub" class="header-logo-img">
-      </a>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="https://vicecityhub.eu" class="btn-back-hub" title="Return to ViceCityHub">
+          <i class="fa-solid fa-arrow-left"></i> <span>ViceCityHub</span>
+        </a>
+        <a href="https://vicecityhub.eu" class="brand-section" title="Return to ViceCityHub">
+          <img src="images/logo.webp" alt="ViceCityHub" class="header-logo-img">
+        </a>
+      </div>
 
       <!-- SEARCH BAR -->
       <div class="search-wrapper">
