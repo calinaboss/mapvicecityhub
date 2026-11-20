@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Page Not Found &bull; Leonida Map &bull; ViceCityHub.eu</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0d1117;
+      background-image: linear-gradient(180deg, rgba(13, 17, 23, 0.84) 0%, rgba(13, 17, 23, 0.92) 100%), url('/images/map-bg.webp');
+      background-size: cover;
+      background-position: center top;
+      color: #f0f6fc;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-404 {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(22, 27, 34, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 36px 28px;
+    }
+    .code-404 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #ff2a85;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+    }
+    p {
+      font-size: 0.88rem;
+      color: #8b949e;
+      line-height: 1.5;
+      margin: 0 0 22px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    .btn-primary {
+      background: #ff2a85;
+      color: #ffffff;
+    }
+    .btn-secondary {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #f0f6fc;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <main class="card-404">
+    <img src="/images/logo.webp" alt="ViceCityHub Logo" style="height: 48px; margin: 0 auto 14px; display: block;">
+    <div class="code-404">404</div>
+    <h1>Coordinate Not Found</h1>
+    <p>This map route does not exist. Return to the interactive Leonida Map or head back to ViceCityHub.eu.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Open Interactive Map</a>
+      <a href="https://vicecityhub.eu" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to ViceCityHub</a>
+    </div>
+  </main>
+</body>
+</html>
