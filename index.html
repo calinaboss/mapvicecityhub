@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>State of Leonida Interactive Map &bull; ViceCityHub.eu</title>
-  <meta name="description" content="ViceCityHub interactive map of Leonida and Vice City for Grand Theft Auto VI. Drag, zoom, and explore landmarks, shops, strip clubs, and secrets.">
+  <meta name="description" content="Explore the high-resolution interactive map of Leonida and Vice City for Grand Theft Auto VI. Complete with in-game locations, collectibles, activities, and real-world counterparts.">
   <meta name="theme-color" content="#0d1117">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="shortcut icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,8 +25,6 @@
       --accent-gold: #fbbf24;
       --accent-purple: #c084fc;
       --accent-green: #10b981;
-      --accent-red: #ef4444;
-      --accent-orange: #f97316;
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
       --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -46,7 +40,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: transparent;
+      background: var(--bg-dark);
       color: var(--text-main);
       font-family: var(--font-main);
       -webkit-font-smoothing: antialiased;
@@ -58,7 +52,6 @@
       width: 100%;
       height: 100%;
       position: relative;
-      background: transparent;
     }
 
     .map-header {
@@ -69,41 +62,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 14px;
-      gap: 12px;
+      gap: 10px;
       z-index: 1000;
       flex-shrink: 0;
-    }
-
-    .btn-back-hub {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .btn-back-hub:hover {
-      background: var(--accent-pink);
-      border-color: var(--accent-pink);
-      color: #ffffff;
     }
 
     .brand-section {
       display: flex;
       align-items: center;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .header-logo-img {
-      height: 30px;
+      height: 32px;
       width: auto;
       display: block;
       transition: opacity 0.2s ease;
@@ -116,7 +88,7 @@
     .search-wrapper {
       position: relative;
       flex: 1;
-      max-width: 420px;
+      max-width: 380px;
     }
 
     .search-input-box {
@@ -125,7 +97,7 @@
       background: var(--bg-dark);
       border: 1px solid var(--border-color);
       border-radius: 6px;
-      padding: 0 12px;
+      padding: 0 10px;
       height: 34px;
       gap: 8px;
       transition: border-color 0.15s ease;
@@ -150,10 +122,6 @@
       font-size: 13px;
     }
 
-    .search-input::placeholder {
-      color: var(--text-muted);
-    }
-
     .search-dropdown {
       position: absolute;
       top: 40px;
@@ -162,9 +130,9 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 6px;
-      max-height: 280px;
+      max-height: 320px;
       overflow-y: auto;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
       display: none;
       z-index: 2000;
     }
@@ -191,6 +159,9 @@
       font-size: 12.5px;
       font-weight: 600;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .search-result-subtitle {
@@ -202,6 +173,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
     }
 
     .map-btn {
@@ -214,13 +186,13 @@
       font-family: var(--font-main);
       font-size: 12px;
       font-weight: 600;
-      padding: 0 12px;
+      padding: 0 10px;
       height: 32px;
       border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
       white-space: nowrap;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
     }
 
     .map-btn:hover {
@@ -234,6 +206,24 @@
       color: var(--accent-cyan);
     }
 
+    .district-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 210, 255, 0.15);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      color: var(--accent-cyan);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .district-chip:hover {
+      background: rgba(0, 210, 255, 0.25);
+    }
+
     .map-body {
       display: flex;
       flex: 1;
@@ -241,24 +231,23 @@
       height: 100%;
       position: relative;
       overflow: hidden;
-      background: transparent;
     }
 
     .map-sidebar {
-      width: 250px;
-      background: rgba(13, 17, 23, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      width: 280px;
+      background: rgba(13, 17, 23, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-right: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
       z-index: 500;
-      transition: width 0.2s ease, margin-left 0.2s ease;
+      transition: margin-left 0.2s ease;
     }
 
     .map-sidebar.collapsed {
-      margin-left: -250px;
+      margin-left: -280px;
     }
 
     .sidebar-head {
@@ -298,7 +287,7 @@
       padding: 8px 10px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 8px;
     }
 
     .sidebar-list::-webkit-scrollbar {
@@ -310,12 +299,63 @@
       border-radius: 2px;
     }
 
+    .group-section {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8b949e;
+      cursor: pointer;
+      user-select: none;
+      border-radius: 4px;
+    }
+
+    .group-header:hover {
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+
+    .group-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .group-chevron {
+      font-size: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .group-section.collapsed .group-chevron {
+      transform: rotate(-90deg);
+    }
+
+    .group-section.collapsed .group-items {
+      display: none;
+    }
+
+    .group-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
     .sidebar-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 10px;
-      border-radius: 6px;
+      padding: 6px 8px;
+      border-radius: 5px;
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
@@ -345,16 +385,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      color: #ffffff;
       flex-shrink: 0;
       margin-right: 8px;
+    }
+
+    .item-icon-box img {
+      width: 14px;
+      height: 14px;
+      filter: brightness(0) invert(1);
     }
 
     .item-count {
       font-size: 11px;
       font-family: monospace;
       color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1px 5px;
+      border-radius: 3px;
     }
 
     .map-canvas-wrapper {
@@ -362,24 +409,24 @@
       width: 100%;
       height: 100%;
       position: relative;
-      background: transparent;
+      background: #091321;
     }
 
     #map {
       width: 100%;
       height: 100%;
-      background: transparent !important;
+      background: #091321 !important;
     }
 
     .leaflet-container {
-      background: transparent !important;
+      background: #091321 !important;
       font-family: var(--font-main) !important;
     }
 
     .leaflet-bar {
       border: 1px solid var(--border-color) !important;
       border-radius: 6px !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
       overflow: hidden;
     }
 
@@ -397,38 +444,146 @@
       color: var(--accent-pink) !important;
     }
 
-    .symbol-marker-pin {
+    .place-label {
+      background: transparent;
+      border: none;
+      pointer-events: none;
+    }
+
+    .place-label span {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(245, 239, 230, 0.85);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.8);
+      pointer-events: auto;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    .place-label span:hover {
+      color: var(--accent-cyan);
+      transform: scale(1.1);
+    }
+
+    .pop {
+      padding: 0;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .pop-shot {
+      display: block;
+      width: 100%;
+      max-height: 160px;
+      overflow: hidden;
+      border-radius: 6px 6px 0 0;
+      background: #000;
+    }
+
+    .pop-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .pop-shot img:hover {
+      transform: scale(1.05);
+    }
+
+    .pop-body {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pop-kind {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-cyan);
+    }
+
+    .pop-kind img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    .pop-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .pop-row {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .pop-row strong {
+      color: var(--text-main);
+    }
+
+    .pop-row a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    .pop-row a:hover {
+      text-decoration: underline;
+    }
+
+    .pop-desc {
+      font-size: 11.5px;
+      color: #c9d1d9;
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 8px;
+      border-radius: 4px;
+      border-left: 2px solid var(--accent-cyan);
+    }
+
+    .pop-actions {
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid #ffffff;
-      color: #ffffff;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pop-btn {
+      flex: 1;
+      height: 28px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-main);
       font-size: 11px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+      font-weight: 600;
       cursor: pointer;
-      transition: transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
 
-    .symbol-marker-pin:hover {
-      transform: scale(1.35);
-      z-index: 10000 !important;
-    }
-
-    .symbol-marker-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: 1px solid #ffffff;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .symbol-marker-dot:hover {
-      transform: scale(1.5);
+    .pop-btn:hover {
+      border-color: var(--accent-pink);
+      background: rgba(255, 42, 133, 0.15);
     }
 
     .leaflet-popup-content-wrapper {
@@ -436,7 +591,7 @@
       color: var(--text-main) !important;
       border: 1px solid var(--border-color) !important;
       border-radius: 8px !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85) !important;
       padding: 0 !important;
     }
 
@@ -446,70 +601,9 @@
     }
 
     .leaflet-popup-content {
-      margin: 14px !important;
-      line-height: 1.4 !important;
-      min-width: 210px;
-    }
-
-    .popup-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .popup-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .popup-row {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: 8px;
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-
-    .popup-row strong {
-      color: var(--text-main);
-    }
-
-    .popup-coords-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-dark);
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      padding: 5px 8px;
-      font-family: monospace;
-      font-size: 11.5px;
-      color: var(--accent-cyan);
-      margin-top: 8px;
-    }
-
-    .copy-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 12px;
-      padding: 2px;
-      transition: color 0.15s ease;
-    }
-
-    .copy-btn:hover {
-      color: var(--text-main);
+      margin: 0 !important;
+      min-width: 240px;
+      max-width: 310px;
     }
 
     .map-hud-bar {
@@ -522,6 +616,10 @@
       z-index: 400;
       pointer-events: none;
       user-select: none;
+      background: rgba(13, 17, 23, 0.7);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(48, 54, 61, 0.5);
     }
 
     .toast-notice {
@@ -542,130 +640,42 @@
     }
 
     @media (max-width: 768px) {
-      .map-header {
-        padding: 0 8px;
-        gap: 6px;
-      }
-      .brand-section {
-        display: none;
-      }
-      .btn-back-hub {
-        padding: 6px 9px;
-        font-size: 11.5px;
-        gap: 5px;
-      }
-      .search-wrapper {
-        flex: 1;
-        min-width: 0;
-        max-width: none;
-      }
-      .search-input-box {
-        padding: 0 8px;
-        height: 32px;
-        gap: 6px;
-      }
-      .search-input {
-        min-width: 0;
-        font-size: 12px;
-      }
-      .header-actions {
-        gap: 5px;
-        flex-shrink: 0;
-      }
-      .map-btn {
-        padding: 0 9px;
-        height: 32px;
-        font-size: 11.5px;
-      }
       .map-sidebar {
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
-        width: 158px;
+        width: 240px;
       }
-      .map-sidebar.collapsed {
-        margin-left: -165px;
-      }
-      .sidebar-head {
-        padding: 8px 10px;
-      }
-      .sidebar-head-title {
-        font-size: 10.5px;
-      }
-      .sidebar-reset-btn {
-        font-size: 10px;
-      }
-      .sidebar-list {
-        padding: 6px;
-        gap: 2px;
-      }
-      .sidebar-item {
-        padding: 5px 6px;
-        font-size: 10.8px;
-        border-radius: 3px;
-      }
-      .sidebar-item-left {
-        gap: 6px;
-      }
-      .sidebar-cat-icon {
-        width: 18px;
-        height: 18px;
-        font-size: 9.5px;
-        border-radius: 3px;
-      }
-      .sidebar-count {
-        font-size: 9.5px;
-        padding: 1px 4px;
-      }
-      .map-hud-bar { bottom: 8px; right: 8px; font-size: 10px; padding: 4px 8px; }
+      .search-wrapper { max-width: 160px; }
+      .map-hud-bar { bottom: 8px; right: 8px; font-size: 10px; }
     }
-
-    @media (max-width: 480px) {
-      #btn-toggle-sidebar span {
-        display: none;
-      }
-      .btn-back-hub span {
-        font-size: 11px;
-      }
-    }
-</style>
-  <link rel="canonical" href="https://map.vicecityhub.eu/">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="GTA 6 map, GTA VI interactive map, Leonida map, Vice City interactive map, GTA 6 coordinates, Port Gellhorn map, Kelly County map, Leonida Keys map, ViceCityHub map">
-  <meta name="author" content="ViceCityHub.eu">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="search" type="application/opensearchdescription+xml" title="ViceCityHub" href="/opensearch.xml">
-  <link rel="alternate" type="application/rss+xml" title="ViceCityHub GTA VI Feed" href="https://vicecityhub.eu/api/feed">
-  <script type="application/ld+json" id="page-seo-schema">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://map.vicecityhub.eu/#mapapp","name":"ViceCityHub Interactive Leonida & Vice City Map Atlas","url":"https://map.vicecityhub.eu/","applicationCategory":"GameApplication","operatingSystem":"All","description":"Full-screen interactive GTA VI (Grand Theft Auto VI) map of the State of Leonida and Vice City with 24+ filterable landmark categories and coordinate tools.","isPartOf":{"@type":"WebSite","name":"ViceCityHub.eu","url":"https://vicecityhub.eu/"}},{"@type":"Map","name":"GTA VI State of Leonida & Vice City Interactive Map","url":"https://map.vicecityhub.eu/","mapType":"https://schema.org/VenueMap"}]}</script>
-  <script src="/data/analytics.js?v=3.8"></script>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-576B86L9"></script>
+  </style>
 </head>
 <body>
 
   <div class="map-app-container">
 
     <header class="map-header">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <a href="https://vicecityhub.eu" class="btn-back-hub" title="Return to ViceCityHub">
-          <i class="fa-solid fa-arrow-left"></i> <span>ViceCityHub</span>
-        </a>
-        <a href="https://vicecityhub.eu" class="brand-section" title="Return to ViceCityHub">
-          <img src="images/logo.webp" alt="ViceCityHub" class="header-logo-img">
-        </a>
-      </div>
+      <a href="../index.html" class="brand-section" title="Return to ViceCityHub">
+        <img src="images/logo.webp" alt="ViceCityHub" class="header-logo-img">
+      </a>
 
       <div class="search-wrapper">
         <div class="search-input-box">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="map-search-input" class="search-input" placeholder="Search landmarks, clubs, roads..." autocomplete="off">
+          <input type="text" id="map-search-input" class="search-input" placeholder="Search locations, ATMs, cards..." autocomplete="off">
         </div>
         <div class="search-dropdown" id="search-dropdown"></div>
       </div>
 
+      <div id="district-filter-pill" style="display: none;"></div>
+
       <div class="header-actions">
+        <button id="btn-toggle-style" class="map-btn" title="Toggle Day/Night Map">
+          <i class="fa-solid fa-moon"></i>
+          <span id="style-btn-text">Night</span>
+        </button>
         <button id="btn-toggle-sidebar" class="map-btn map-btn-active" title="Toggle Filters Sidebar">
           <i class="fa-solid fa-filter"></i>
           <span>Filters</span>
@@ -684,7 +694,6 @@
           <button class="sidebar-reset-btn" id="btn-filter-reset">Show All</button>
         </div>
         <div class="sidebar-list" id="sidebar-categories-list">
-
         </div>
       </aside>
 
@@ -692,7 +701,7 @@
         <div id="map"></div>
 
         <div class="map-hud-bar">
-          <span id="hud-coords-text">X: 0.0 | Y: 0.0</span>
+          <span id="hud-coords-text">X: 0 | Y: 0</span>
         </div>
 
         <div id="map-toast" class="toast-notice"></div>
@@ -703,8 +712,751 @@
   </div>
 
   <script src="leaflet/leaflet.js"></script>
-  <script src="data/landmarks.js"></script>
+  <script src="data/map-data.js"></script>
 
-  <script src="data/map-app.js?v=3.7"></script>
+  <script>
+(function() {
+      'use strict';
+
+      const data = window.MAP_DATA;
+      if (!data) return;
+
+      const items = data.items;
+      const districts = data.districts;
+      const labels = data.labels;
+      const groups = data.groups;
+      const kinds = data.kinds;
+
+      const catBy = {};
+      kinds.forEach(k => catBy[k.key] = k);
+
+      const BOUNDS = L.latLngBounds([-800, 160], [-160, 832]);
+      const CLUSTER_BELOW = 2.5;
+      const CELL = 64;
+      const DISTRICT_FILL_UNTIL = 3;
+
+      let currentStyle = 'night';
+      let activeKinds = new Set(kinds.map(k => k.key));
+      let activeDistrict = null;
+
+      const map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        maxZoom: 7,
+        zoomSnap: 0.5,
+        preferCanvas: true,
+        maxBounds: BOUNDS.pad(0.35),
+        zoomControl: false
+      });
+
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+      let tileLayer = L.tileLayer('https://fbritoferreira.github.io/gta6/tiles/' + currentStyle + '/{z}/{z},{y},{x}.webp', {
+        tileSize: 256,
+        minZoom: -1,
+        minNativeZoom: 0,
+        maxNativeZoom: 5,
+        noWrap: true,
+        bounds: BOUNDS
+      }).addTo(map);
+
+      const toGame = (x, y) => ({ gx: Math.round(x * 32 - 16384), gy: Math.round(16384 - y * 32) });
+
+      const hudCoords = document.getElementById('hud-coords-text');
+      map.on('mousemove', function(e) {
+        const x = e.latlng.lng;
+        const y = -e.latlng.lat;
+        const { gx, gy } = toGame(x, y);
+        if (hudCoords) {
+          hudCoords.textContent = 'X: ' + gx + '  |  Y: ' + gy;
+        }
+      });
+
+      function showToast(msg) {
+        const toast = document.getElementById('map-toast');
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.style.display = 'block';
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.style.display = 'none';
+        }, 2200);
+      }
+
+      window.copyText = function(text, label) {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(label + ' copied: ' + text);
+          });
+        } else {
+          showToast(label + ': ' + text);
+        }
+      };
+
+      const districtBounds = new Map();
+      const districtLayer = L.layerGroup().addTo(map);
+      const labelLayer = L.layerGroup().addTo(map);
+
+      const districtStyle = (hover) => ({
+        color: '#00d2ff',
+        weight: 1.5,
+        dashArray: '4 6',
+        fillColor: '#00d2ff',
+        opacity: hover ? 0.9 : 0.45,
+        fill: map.getZoom() < DISTRICT_FILL_UNTIL,
+        fillOpacity: hover ? 0.12 : 0.03
+      });
+
+      districts.forEach(d => {
+        const poly = L.polygon(
+          d.rings.map(ring => ring.map(([x, y]) => [-y, x])),
+          districtStyle(false)
+        );
+
+        poly.on('mouseover', () => poly.setStyle(districtStyle(true)));
+        poly.on('mouseout', () => poly.setStyle(districtStyle(false)));
+        poly.on('click', () => setDistrictFilter(d.name));
+
+        districtBounds.set(d.name, poly.getBounds());
+        districtLayer.addLayer(poly);
+      });
+
+      labels.forEach(l => {
+        const m = L.marker([-l.y, l.x], {
+          icon: L.divIcon({
+            className: 'place-label',
+            html: `<span>${escapeHtml(l.name)}</span>`
+          }),
+          interactive: true
+        });
+        m.on('click', () => setDistrictFilter(l.name));
+        labelLayer.addLayer(m);
+      });
+
+      const sprites = new Map();
+      const PINS = {};
+      const ICONS = {};
+
+      const makeSprite = (key, w, h, ax, ay, draw) => {
+        const dpr = window.devicePixelRatio || 1;
+        const c = Object.assign(document.createElement('canvas'), { w, h, ax, ay });
+        c.width = Math.ceil(w * dpr);
+        c.height = Math.ceil(h * dpr);
+        const ctx = c.getContext('2d');
+        ctx.scale(dpr, dpr);
+        draw(ctx);
+        sprites.set(key, c);
+        return c;
+      };
+
+      const pinPath = (ctx, x0, y0, s, rr, tail) => {
+        const x1 = x0 + s, y1 = y0 + s, cx = x0 + s / 2, tw = s * 0.19;
+        ctx.beginPath();
+        ctx.moveTo(x0 + rr, y0);
+        ctx.lineTo(x1 - rr, y0);
+        ctx.arcTo(x1, y0, x1, y0 + rr, rr);
+        ctx.lineTo(x1, y1 - rr);
+        ctx.arcTo(x1, y1, x1 - rr, y1, rr);
+        if (tail) {
+          ctx.lineTo(cx + tw, y1);
+          ctx.lineTo(cx, y1 + tail);
+          ctx.lineTo(cx - tw, y1);
+        }
+        ctx.lineTo(x0 + rr, y1);
+        ctx.arcTo(x0, y1, x0, y1 - rr, rr);
+        ctx.lineTo(x0, y0 + rr);
+        ctx.arcTo(x0, y0, x0 + rr, y0, rr);
+        ctx.closePath();
+      };
+
+      function badge(kind, r, pin) {
+        const key = `${kind}:${r}:${pin}`;
+        const hit = sprites.get(key);
+        if (hit) return hit;
+
+        const conf = catBy[kind] || { colour: '#ffffff', icon: '📍' };
+        const fill = conf.colour;
+
+        if (r < 6) {
+          const m = r + 2;
+          return makeSprite(key, m * 2, m * 2, m, m, (x) => {
+            x.beginPath();
+            x.arc(m, m, r, 0, Math.PI * 2);
+            x.fillStyle = fill;
+            x.fill();
+            x.lineWidth = 1.25;
+            x.strokeStyle = '#000000';
+            x.stroke();
+          });
+        }
+
+        const side = r * 2;
+        const tail = pin ? Math.round(r * 0.5) : 0;
+        const pad = Math.ceil(r * 0.45) + 2;
+        const w = side + pad * 2;
+        const h = side + tail + pad * 2;
+
+        return makeSprite(key, w, h, w / 2, pin ? pad + side + tail : pad + side / 2, (x) => {
+          x.save();
+          x.shadowColor = 'rgba(0, 0, 0, 0.6)';
+          x.shadowBlur = r * 0.5;
+          x.shadowOffsetY = r * 0.15;
+          pinPath(x, pad, pad, side, r * 0.45, tail);
+          x.fillStyle = fill;
+          x.fill();
+          x.restore();
+
+          x.lineWidth = Math.max(1.5, r * 0.13);
+          x.strokeStyle = '#ffffff';
+          x.stroke();
+
+          const g = side * 0.62;
+          const gx = pad + (side - g) / 2;
+          if (ICONS[kind]) {
+            x.drawImage(ICONS[kind], gx, gx, g, g);
+          } else {
+            const dpr = window.devicePixelRatio || 1;
+            const t = document.createElement('canvas');
+            t.width = t.height = Math.ceil(side * dpr);
+            const tx = t.getContext('2d');
+            tx.scale(dpr, dpr);
+            tx.font = `${Math.round(g)}px sans-serif`;
+            tx.textAlign = 'center';
+            tx.textBaseline = 'middle';
+            tx.fillText(conf.icon || '📍', side / 2, side / 2 + 1);
+            x.drawImage(t, pad, pad, side, side);
+          }
+        });
+      }
+
+      function pinSprite(slug, r) {
+        const key = `pin:${slug}:${r}`;
+        const hit = sprites.get(key);
+        if (hit) return hit;
+
+        const img = PINS[slug];
+        if (!img || !img.naturalWidth) return badge('other', r, true);
+
+        const h = Math.round(r * 2.7);
+        const w = Math.round((h * img.naturalWidth) / img.naturalHeight);
+
+        return makeSprite(key, w, h, w / 2, h, (x) => {
+          x.drawImage(img, 0, 0, w, h);
+        });
+      }
+
+      const BlipClass = L.CircleMarker.extend({
+        _sprite() {
+          const { kind, pin } = this.item;
+          const r = this._radius;
+          return pin && PINS[pin] && r >= 6 ? pinSprite(pin, r) : badge(kind, r, true);
+        },
+        _updateBounds() {
+          const s = this._sprite();
+          const p = this._point;
+          this._pxBounds = L.bounds([p.x - s.ax, p.y - s.ay], [p.x - s.ax + s.w, p.y - s.ay + s.h]);
+        },
+        _updatePath() {
+          const ren = this._renderer;
+          if (!ren._drawing || this._empty()) return;
+          const s = this._sprite();
+          const ctx = ren._ctx;
+          ctx.globalAlpha = 1;
+          ctx.drawImage(s, this._point.x - s.ax, this._point.y - s.ay, s.w, s.h);
+        },
+        _containsPoint(p) {
+          return this._pxBounds && this._pxBounds.contains(p);
+        }
+      });
+
+      const ClusterClass = L.CircleMarker.extend({
+        _updatePath() {
+          const ren = this._renderer;
+          if (!ren._drawing || this._empty()) return;
+          const ctx = ren._ctx;
+          const { x, y } = this._point;
+          const r = this._radius;
+          const { count, slices } = this.options;
+
+          ctx.globalAlpha = 1;
+          ctx.setLineDash([]);
+          ctx.save();
+          ctx.shadowColor = 'rgba(0, 210, 255, 0.45)';
+          ctx.shadowBlur = 12;
+          ctx.shadowOffsetY = 2;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = '#0d1117';
+          ctx.fill();
+          ctx.restore();
+
+          let a = -Math.PI / 2;
+          ctx.lineWidth = 4;
+          ctx.lineCap = 'butt';
+          for (const [colour, n] of slices) {
+            const b = a + (n / count) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.arc(x, y, r - 3, a, b);
+            ctx.strokeStyle = colour;
+            ctx.stroke();
+            a = b;
+          }
+
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = '#00d2ff';
+          ctx.stroke();
+
+          ctx.fillStyle = '#ffffff';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.font = `800 ${r < 20 ? 12 : 14}px 'Plus Jakarta Sans', system-ui, sans-serif`;
+          ctx.fillText(count >= 1000 ? `${(count / 1000).toFixed(1)}k` : String(count), x, y + 1);
+        }
+      });
+
+      const clusterLayer = L.layerGroup();
+      const markersLayer = L.layerGroup().addTo(map);
+
+      const markers = new Map();
+      items.forEach(it => {
+        const m = new BlipClass([-it.y, it.x], { radius: 10 });
+        m.item = it;
+        m.bindTooltip(escapeHtml(it.name), { direction: 'top', offset: [0, -26] });
+        m.bindPopup(() => buildPopup(it), {
+          maxWidth: 320,
+          minWidth: 260,
+          offset: [0, -22]
+        });
+        markers.set(it.id, m);
+      });
+
+      function clusterZoom(bounds) {
+        const targetZoom = Math.min(Math.max(map.getBoundsZoom(bounds, false, L.point(80, 80)), Math.ceil(map.getZoom()) + 1), 4.5);
+        map.flyTo(bounds.getCenter(), targetZoom, { duration: 0.6 });
+      }
+
+      function buildPopup(it) {
+        const conf = catBy[it.kind] || { name: 'Location', colour: '#00d2ff' };
+        const iconSrc = it.pin ? `images/pins/${encodeURIComponent(it.pin)}.webp` : `icons/${it.kind}.svg`;
+        const { gx, gy } = toGame(it.x, it.y);
+
+        const el = document.createElement('div');
+        el.className = 'pop';
+
+        const shotHtml = it.screenshot
+          ? `<a class="pop-shot" href="https://fbritoferreira.github.io/gta6/${it.screenshot}" target="_blank" rel="noopener">
+               <img src="https://fbritoferreira.github.io/gta6/${it.screenshot}" alt="${escapeHtml(it.name)}" loading="lazy">
+             </a>`
+          : '';
+
+        el.innerHTML = `
+          ${shotHtml}
+          <div class="pop-body">
+            <div class="pop-kind" style="color: ${conf.colour};">
+              <img src="${iconSrc}" alt="" onerror="this.style.display='none';">
+              ${escapeHtml(it.type || conf.name)}
+            </div>
+            <div class="pop-title">${escapeHtml(it.name)}</div>
+            ${it.area ? `<div class="pop-row"><strong>Area:</strong> <span>${escapeHtml(it.area)}</span></div>` : (it.district ? `<div class="pop-row"><strong>District:</strong> <span>${escapeHtml(it.district)}</span></div>` : '')}
+            ${it.real_life ? `<div class="pop-row"><strong>Real life:</strong> <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.real_life)}" target="_blank" rel="noopener">${escapeHtml(it.real_life)}</a></div>` : ''}
+            ${it.desc ? `<div class="pop-desc">${escapeHtml(it.desc)}</div>` : ''}
+            <div class="pop-actions">
+              <button type="button" class="pop-btn" onclick="copyText('X: ${gx}, Y: ${gy}', 'Coordinates')">
+                <i class="fa-regular fa-copy"></i> Coords
+              </button>
+              <button type="button" class="pop-btn" onclick="copyText(window.location.origin + window.location.pathname + '?id=${encodeURIComponent(it.id)}', 'Link')">
+                <i class="fa-solid fa-link"></i> Copy Link
+              </button>
+            </div>
+          </div>
+        `;
+        return el;
+      }
+
+      function isVisible(it) {
+        if (!activeKinds.has(it.kind)) return false;
+        if (activeDistrict && it.district !== activeDistrict) return false;
+        return true;
+      }
+
+      function render() {
+        const z = map.getZoom();
+        const clustering = z < CLUSTER_BELOW;
+        const singles = new Set();
+
+        clusterLayer.clearLayers();
+
+        if (clustering) {
+          const cells = new Map();
+          for (const m of markers.values()) {
+            if (!isVisible(m.item)) continue;
+            const c = map.project(m.getLatLng(), z).divideBy(CELL).floor();
+            const key = `${c.x},${c.y}`;
+            const cell = cells.get(key);
+            if (cell) cell.push(m);
+            else cells.set(key, [m]);
+          }
+
+          for (const ms of cells.values()) {
+            if (ms.length === 1) {
+              singles.add(ms[0]);
+              continue;
+            }
+
+            const byKind = {};
+            for (const m of ms) byKind[m.item.kind] = (byKind[m.item.kind] || 0) + 1;
+            const top = Object.entries(byKind).sort((p, q) => q[1] - p[1]);
+            const lat = ms.reduce((s, m) => s + m.getLatLng().lat, 0) / ms.length;
+            const lng = ms.reduce((s, m) => s + m.getLatLng().lng, 0) / ms.length;
+            const radius = Math.round(15 + Math.min(11, Math.log2(ms.length) * 2.2));
+
+            const cl = new ClusterClass([lat, lng], {
+              radius,
+              count: ms.length,
+              slices: [
+                ...top.slice(0, 4).map(([k, n]) => [(catBy[k] && catBy[k].colour) || '#00d2ff', n]),
+                ...(top.length > 4 ? [['#30363d', top.slice(4).reduce((s, [, n]) => s + n, 0)]] : [])
+              ]
+            });
+
+            cl.bindTooltip(
+              `${ms.length} locations<br>${top.slice(0, 3).map(([k, n]) => `${n} ${(catBy[k] && catBy[k].name) || k}`).join('<br>')}`,
+              { direction: 'top', offset: [0, -radius] }
+            );
+
+            cl.on('click', () => clusterZoom(L.latLngBounds(ms.map(m => m.getLatLng()))));
+            clusterLayer.addLayer(cl);
+          }
+
+          if (!map.hasLayer(clusterLayer)) clusterLayer.addTo(map);
+        } else {
+          if (map.hasLayer(clusterLayer)) map.removeLayer(clusterLayer);
+        }
+
+        for (const m of markers.values()) {
+          const show = isVisible(m.item) && (!clustering || singles.has(m));
+          if (show && !markersLayer.hasLayer(m)) {
+            markersLayer.addLayer(m);
+          } else if (!show && markersLayer.hasLayer(m)) {
+            markersLayer.removeLayer(m);
+          }
+        }
+      }
+
+      let renderTimer = null;
+      function debouncedRender() {
+        if (renderTimer) clearTimeout(renderTimer);
+        renderTimer = setTimeout(render, 40);
+      }
+
+      map.on('moveend zoomend', debouncedRender);
+
+      function setDistrictFilter(districtName) {
+        if (activeDistrict === districtName) {
+          activeDistrict = null;
+        } else {
+          activeDistrict = districtName;
+          const bounds = districtBounds.get(districtName);
+          if (bounds) {
+            map.flyToBounds(bounds, { maxZoom: 3.5, padding: [60, 60], duration: 0.8 });
+          }
+        }
+        updateDistrictChip();
+        render();
+      }
+
+      function updateDistrictChip() {
+        const pill = document.getElementById('district-filter-pill');
+        if (!pill) return;
+        if (activeDistrict) {
+          pill.style.display = 'inline-flex';
+          pill.className = 'district-chip';
+          pill.innerHTML = `<span>Only ${escapeHtml(activeDistrict)}</span> <i class="fa-solid fa-xmark"></i>`;
+          pill.onclick = () => setDistrictFilter(activeDistrict);
+        } else {
+          pill.style.display = 'none';
+        }
+      }
+
+      function buildSidebar() {
+        const listEl = document.getElementById('sidebar-categories-list');
+        if (!listEl) return;
+
+        const counts = {};
+        items.forEach(it => {
+          counts[it.kind] = (counts[it.kind] || 0) + 1;
+        });
+
+        const groupMap = {};
+        groups.forEach(g => groupMap[g] = []);
+        kinds.forEach(k => {
+          if (!groupMap[k.group]) groupMap[k.group] = [];
+          groupMap[k.group].push(k);
+        });
+
+        listEl.innerHTML = groups.map(groupName => {
+          const groupKinds = groupMap[groupName] || [];
+          if (groupKinds.length === 0) return '';
+
+          const rowsHtml = groupKinds.map(k => {
+            const isActive = activeKinds.has(k.key);
+            const count = counts[k.key] || 0;
+            return `
+              <div class="sidebar-item ${isActive ? 'active' : ''}" data-kind="${k.key}">
+                <div style="display: flex; align-items: center;">
+                  <div class="item-icon-box" style="background: ${k.colour};">
+                    <img src="icons/${k.key}.svg" alt="" onerror="this.style.display='none';">
+                  </div>
+                  <span>${escapeHtml(k.name)}</span>
+                </div>
+                <span class="item-count">${count}</span>
+              </div>
+            `;
+          }).join('');
+
+          return `
+            <div class="group-section" data-group="${groupName}">
+              <div class="group-header">
+                <div class="group-title-wrap">
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                  <span>${groupName}</span>
+                </div>
+              </div>
+              <div class="group-items">
+                ${rowsHtml}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        listEl.querySelectorAll('.group-header').forEach(header => {
+          header.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.closest('.group-section').classList.toggle('collapsed');
+          });
+        });
+
+        listEl.querySelectorAll('.sidebar-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const kindKey = this.getAttribute('data-kind');
+            if (activeKinds.has(kindKey)) {
+              if (activeKinds.size === 1) {
+                activeKinds = new Set(kinds.map(k => k.key));
+              } else {
+                activeKinds.delete(kindKey);
+              }
+            } else {
+              activeKinds.add(kindKey);
+            }
+            updateSidebarActiveStates();
+            render();
+          });
+        });
+      }
+
+      function updateSidebarActiveStates() {
+        const listEl = document.getElementById('sidebar-categories-list');
+        if (!listEl) return;
+        listEl.querySelectorAll('.sidebar-item').forEach(item => {
+          const kindKey = item.getAttribute('data-kind');
+          if (activeKinds.has(kindKey)) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+        const btnReset = document.getElementById('btn-filter-reset');
+        if (btnReset) {
+          btnReset.textContent = activeKinds.size === kinds.length ? 'Hide All' : 'Show All';
+        }
+      }
+
+      const btnFilterReset = document.getElementById('btn-filter-reset');
+      if (btnFilterReset) {
+        btnFilterReset.addEventListener('click', function() {
+          if (activeKinds.size === kinds.length) {
+            activeKinds.clear();
+            btnFilterReset.textContent = 'Show All';
+          } else {
+            activeKinds = new Set(kinds.map(k => k.key));
+            btnFilterReset.textContent = 'Hide All';
+          }
+          updateSidebarActiveStates();
+          render();
+        });
+      }
+
+      const btnToggleStyle = document.getElementById('btn-toggle-style');
+      const styleBtnText = document.getElementById('style-btn-text');
+      if (btnToggleStyle) {
+        btnToggleStyle.addEventListener('click', function() {
+          currentStyle = currentStyle === 'night' ? 'day' : 'night';
+          map.removeLayer(tileLayer);
+          tileLayer = L.tileLayer('https://fbritoferreira.github.io/gta6/tiles/' + currentStyle + '/{z}/{z},{y},{x}.webp', {
+            tileSize: 256,
+            minZoom: -1,
+            minNativeZoom: 0,
+            maxNativeZoom: 5,
+            noWrap: true,
+            bounds: BOUNDS
+          }).addTo(map);
+          tileLayer.bringToBack();
+          if (styleBtnText) {
+            styleBtnText.textContent = currentStyle === 'night' ? 'Night' : 'Day';
+          }
+          btnToggleStyle.querySelector('i').className = currentStyle === 'night' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+        });
+      }
+
+      const sidebarEl = document.getElementById('map-sidebar');
+      const toggleSidebarBtn = document.getElementById('btn-toggle-sidebar');
+      if (toggleSidebarBtn && sidebarEl) {
+        toggleSidebarBtn.addEventListener('click', function() {
+          const isCollapsed = sidebarEl.classList.toggle('collapsed');
+          if (isCollapsed) {
+            toggleSidebarBtn.classList.remove('map-btn-active');
+          } else {
+            toggleSidebarBtn.classList.add('map-btn-active');
+          }
+          setTimeout(() => map.invalidateSize(), 220);
+        });
+      }
+
+      const fsBtn = document.getElementById('btn-toggle-fullscreen');
+      if (fsBtn) {
+        fsBtn.addEventListener('click', function() {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+          } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        });
+      }
+
+      const searchInput = document.getElementById('map-search-input');
+      const searchDropdown = document.getElementById('search-dropdown');
+
+      if (searchInput && searchDropdown) {
+        searchInput.addEventListener('input', function() {
+          const query = this.value.trim().toLowerCase();
+          if (query.length < 2) {
+            searchDropdown.classList.remove('open');
+            searchDropdown.innerHTML = '';
+            return;
+          }
+
+          const matches = items.filter(it => {
+            return (it.name && it.name.toLowerCase().includes(query)) ||
+                   (it.type && it.type.toLowerCase().includes(query)) ||
+                   (it.area && it.area.toLowerCase().includes(query)) ||
+                   (it.district && it.district.toLowerCase().includes(query)) ||
+                   (it.real_life && it.real_life.toLowerCase().includes(query)) ||
+                   (it.desc && it.desc.toLowerCase().includes(query));
+          }).slice(0, 12);
+
+          if (matches.length === 0) {
+            searchDropdown.innerHTML = '<div style="padding: 12px; font-size: 12px; color: var(--text-muted); text-align: center;">No matching locations found</div>';
+            searchDropdown.classList.add('open');
+            return;
+          }
+
+          searchDropdown.innerHTML = matches.map(m => {
+            const conf = catBy[m.kind] || { colour: '#00d2ff', name: m.kind };
+            const iconSrc = m.pin ? `images/pins/${encodeURIComponent(m.pin)}.webp` : `icons/${m.kind}.svg`;
+            return `
+              <div class="search-result-item" data-id="${m.id}">
+                <div class="search-result-title">
+                  <img src="${iconSrc}" style="width: 16px; height: 16px; object-fit: contain;" alt="" onerror="this.style.display='none';">
+                  <span>${escapeHtml(m.name)}</span>
+                </div>
+                <div class="search-result-subtitle">${escapeHtml(m.type || m.area || m.district || conf.name)}</div>
+              </div>
+            `;
+          }).join('');
+
+          searchDropdown.classList.add('open');
+        });
+
+        searchDropdown.addEventListener('click', function(e) {
+          const itemEl = e.target.closest('.search-result-item');
+          if (!itemEl) return;
+          const id = itemEl.getAttribute('data-id');
+          const target = items.find(it => it.id === id);
+          if (target) {
+            searchDropdown.classList.remove('open');
+            searchInput.value = target.name;
+
+            if (!activeKinds.has(target.kind)) {
+              activeKinds.add(target.kind);
+              updateSidebarActiveStates();
+            }
+
+            map.flyTo([-target.y, target.x], 4.5, { duration: 1.0 });
+
+            setTimeout(() => {
+              render();
+              const marker = markers.get(target.id);
+              if (marker) marker.openPopup();
+            }, 1050);
+          }
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+            searchDropdown.classList.remove('open');
+          }
+        });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      const initialBounds = L.latLngBounds(items.map(it => [-it.y, it.x])).pad(0.04);
+      map.fitBounds(initialBounds, { padding: [10, 10] });
+
+      buildSidebar();
+      render();
+
+      const loadIconsAndPins = async () => {
+        await Promise.all([
+          ...kinds.map(async k => {
+            try {
+              const r = await fetch(`icons/${k.key}.svg`);
+              if (!r.ok) return;
+              const svgText = (await r.text())
+                .replace(/currentColor/g, '#fff')
+                .replace(/stroke-width="2"/, 'stroke-width="2.25"')
+                .replace(/width="24"/, 'width="96"')
+                .replace(/height="24"/, 'height="96"');
+              const img = new Image();
+              img.src = URL.createObjectURL(new Blob([svgText], { type: 'image/svg+xml' }));
+              await img.decode();
+              ICONS[k.key] = img;
+            } catch (err) {}
+          }),
+          ...[...new Set(items.map(it => it.pin).filter(Boolean))].map(async slug => {
+            const img = new Image();
+            img.src = `images/pins/${slug}.webp`;
+            try {
+              await img.decode();
+              PINS[slug] = img;
+            } catch (err) {}
+          })
+        ]);
+        render();
+      };
+
+      loadIconsAndPins();
+
+    })();
+  </script>
 </body>
 </html>
